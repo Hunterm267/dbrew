@@ -12,16 +12,7 @@
 
 #include <dbrew.h>
 #include <dbrew-llvm.h>
-
-
-float
-sample_func(size_t n, float* arr)
-{
-    float res = 0;
-    for (size_t i = 0; i < n; i++)
-        res += arr[i];
-    return res;
-}
+#include "lifter.h"
 
 int
 main(void)
@@ -32,13 +23,13 @@ main(void)
     // Eventually configure state
 
     LLConfig config = {
-        .name = "sample_func",
+        .name = "compoundAdd",
         .stackSize = 128,
-        .signature = 00262, // float (i64, i8*)
+        .signature = 0221, // float (i64, i8*)
     };
 
     // Decod function and lift to LLVM IR
-    LLFunction* fn = ll_decode_function((uintptr_t) sample_func, (DecodeFunc) dbrew_decode, r, &config, state);
+    LLFunction* fn = ll_decode_function((uintptr_t) compoundAdd, (DecodeFunc) dbrew_decode, r, &config, state);
 
     // Run optimization passes
     ll_engine_optimize(state, 3);

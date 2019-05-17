@@ -18,7 +18,7 @@ LDLIBS = `$(LLVM_CONFIG) --libs $(LLVM_MODULES)` -lstdc++ -lm -lz -ldl -lpthread
 
 all: spmv lifter
 
-lifter: lifter.c ../../libdbrew.a ../libdbrew-llvm.a
+lifter: lifter.c ../../libdbrew.a ../libdbrew-llvm.a lifter.h sample_funct.c
 spmv: spmv.c ../benchmark/timer.c ../../libdbrew.a ../libdbrew-llvm.a
 
 .PHONY: clean
