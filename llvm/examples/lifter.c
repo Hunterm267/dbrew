@@ -23,13 +23,13 @@ main(void)
     // Eventually configure state
 
     LLConfig config = {
-        .name = "compoundAdd",
+        .name = "sample_func",
         .stackSize = 128,
         .signature = 0221, // float (i64, i8*)
     };
 
     // Decod function and lift to LLVM IR
-    LLFunction* fn = ll_decode_function((uintptr_t) compoundAdd, (DecodeFunc) dbrew_decode, r, &config, state);
+    LLFunction* fn = ll_decode_function((uintptr_t) sample_func, (DecodeFunc) dbrew_decode, r, &config, state);
 
     // Run optimization passes
     ll_engine_optimize(state, 3);
