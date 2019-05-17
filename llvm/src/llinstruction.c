@@ -237,6 +237,7 @@ ll_generate_instruction(LLInstr* instr, LLState* state)
     // Add Metadata for debugging.
     LLVMValueRef intrinsicDoNothing = ll_support_get_intrinsic(state->module, LL_INTRINSIC_DO_NOTHING, NULL, 0);
     char* instructionName = instr2string(instr, 0, NULL);
+    printf("%s\n",instructionName);
     LLVMValueRef mdCall = LLVMBuildCall(state->builder, intrinsicDoNothing, NULL, 0, "");
     LLVMValueRef mdNode = LLVMMDStringInContext(state->context, instructionName, strlen(instructionName));
     LLVMSetMetadata(mdCall, LLVMGetMDKindIDInContext(state->context, "asm.instr", 9), mdNode);
