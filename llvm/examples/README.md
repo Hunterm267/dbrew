@@ -1,5 +1,7 @@
 # DBrew Lifter for s2par Function Lifting
 
+*Written for commit number [f40d26f7fb5d151112123c621501482245df782f](https://github.com/Hunterm267/dbrew/tree/f40d26f7fb5d151112123c621501482245df782f) of the lifter*
+
 The DBrew instruction lifter currently works for s2par function lifting. In its current state, it will accept a single C function as its input, and produce LLVM-IR code. The C function needs to be provided as source code in the sample_funct.c file, its function signature added in the Lifter.h file, and a reference to the new function added in the Lifter.c file.
 
 ### Building DBrew and the Lifter
